@@ -11,7 +11,7 @@ public class Aplicacao {
 
 	public static void main(String[] args) throws ParseException {
 		
-		LivrosClient cliente = new LivrosClient();
+		LivrosClient cliente = new LivrosClient("http://localhost:8080", "algaworks", "123456");
 		
 		List<Livro> listaLivros = cliente.listar();
 		
@@ -33,5 +33,9 @@ public class Aplicacao {
 		String localizacao = cliente.salvar(livro);
 		
 		System.out.println("URI do livro salvo: " + localizacao);
+		
+		Livro livroBuscado = cliente.buscar(localizacao);
+		System.out.println("Nome do livro: " + livroBuscado.getNome());
+		
 	}
 }
